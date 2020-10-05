@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mr-auto">
+            <div class="card">
+                <h2 class="text-left ml-2">signup</h2>
+                <form #signUpForm='ngForm' (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" >
+                   
+                    <input type="text" #fullname='ngModel' [(ngModel)]='csvService.selectedUser.fullname' name="fullname" placeholder="fullname" required [ngClass]="{'invalid-textbox':signUpForm.submitted && !fullname.valid}">
+                  
+                    <div *ngIf="signUpForm.submitted && !fullname.valid">
+                    <label class="validation-message">This field is required</label>
+                   </div>
+                   
+                   <input type="email"  #email='ngModel' [(ngModel)]='csvService.selectedUser.email' name="email" placeholder="email" required [pattern]="emailRegex" [ngClass]="{'invalid-textbox':signUpForm.submitted && !email.valid}">
+                   
+                    <div *ngIf="signUpForm.submitted && !email.valid">
+                        <label *ngIf="email.errors.required" class="validation-message">This field is required</label>
+                        <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address</label>
+                    </div>
+                    
+                    <input type="password"   #password='ngModel' [(ngModel)]='csvService.selectedUser.password' name="password" placeholder="password" minlength="4" required [ngClass]="{'invalid-textbox':signUpForm.submitted && !password.valid}">
+                   
+                    <div *ngIf="signUpForm.submitted && !password.valid">
+                        <label *ngIf="password.errors.required" class="validation-message">This field is required</label>
+                        <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters</label>
+                    </div>
+                   
+                   
+                   
+                    <button type="submit">sign up</button>
+                </form>
+                <!--success message-->
+                <div class="success" *ngIf="showSuccessMessage">
+                    Resisteration successfull........
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

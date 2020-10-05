@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mr-auto">
+            <div class="card">
+                <h2 class="text-left ml-2">Login</h2>
+                <form #loginForm='ngForm' (ngSubmit)="loginForm.valid && onSubmit(loginForm)">
+                    <input type="email"  #email='ngModel' [(ngModel)]='csvService.selectedUser.email' name="email" placeholder="email" required [pattern]="emailRegex" [ngClass]="{'invalid-textbox':loginForm.submitted && !email.valid}">
+                   
+                    <div *ngIf="loginForm.submitted && !email.valid">
+                        <label *ngIf="email.errors.required" class="validation-message">This field is required</label>
+                        <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address</label>
+                    </div>
+                    
+                    <input type="password"   #password='ngModel' [(ngModel)]='csvService.selectedUser.password' name="password" placeholder="password" minlength="4" required [ngClass]="{'invalid-textbox':loginForm.submitted && !password.valid}">
+                   
+                    <div *ngIf="loginForm.submitted && !password.valid">
+                        <label *ngIf="password.errors.required" class="validation-message">This field is required</label>
+                        <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters</label>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+
+                <!--error message-->
+                <div class="alert" *ngIf="serverErrorMessages">
+                   {{serverErrorMessages}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

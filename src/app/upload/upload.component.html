@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mr-auto">
+            <div class="card">
+                
+                <form #uploadForm='ngForm' (ngSubmit)="uploadForm.valid && onSubmit(uploadForm)" enctype="multipart/form-data"  >
+                    <input type="file" name="file" placeholder="upload" id="fileUpload"  ng2FileSelect [uploader]='uploader' required >
+                   
+                    <button type="submit"> upload</button>
+                </form>
+
+                <!--success message-->
+                <div class="success" *ngIf="showSuccessMessage">
+                    file uploaded successfully........
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

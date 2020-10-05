@@ -1,0 +1,19 @@
+form{
+    padding: 20px;
+}
+form input{
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 7px;
+    border: 2px solid green;
+}
+.validation-message{color: red;}
+.card{
+    padding: 40px;
+    margin: 20px 40px;
+}
+button{
+    padding: 10px 20px;
+    background: blue;
+    color: aliceblue;
+}
